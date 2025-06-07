@@ -1,0 +1,25 @@
+.env
+venv
+__pycache__
+*.pyc
+*.log
+dist/
+build/
+.vscode/
+# Python specific
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+# Docker related
+.dockerignore
+# Docker specific
+agent/.dockerignore
+# IDE specific
+.idea/
+.DS_Store
+# Other common
+*.swp
+*.bak
+*.swo
