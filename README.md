@@ -112,7 +112,7 @@ The Jira Agent is built using Google's Agent Development Kit (ADK). For interact
 
 ```mermaid
 graph LR
-    User --> JiraAgentADK[Jira Agent (ADK-based)];
+    User --> JiraAgentADK["Jira Agent (ADK-based)"];
     JiraAgentADK -- Uses Tools --> MCPAtlassian[mcp-atlassian Server];
     MCPAtlassian -- Interacts With --> Jira[Jira API];
     MCPAtlassian -- Interacts With --> Confluence[Confluence API];
