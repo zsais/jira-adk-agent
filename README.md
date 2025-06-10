@@ -15,11 +15,11 @@ The Jira Agent is an AI-powered assistant designed to improve engineering effici
 
 ## How it Works
 
-1.  **Core Engine (ADK):** The agent is built using Google's Agent Development Kit (ADK), an open-source Python toolkit. The ADK defines the agent's core logic, its instructions (as detailed in [`agent/AGENT_PERSONA_AND_INSTRUCTIONS.md`](agent/AGENT_PERSONA_AND_INSTRUCTIONS.md) and embedded in [`agent/main.py`](agent/main.py)), and the Large Language Model (LLM) it utilizes (e.g., Gemini).
+1.  **Core Engine (ADK):** The agent is built using Google's Agent Development Kit (ADK), an open-source Python toolkit. The ADK defines the agent's core logic, its instructions (as detailed in [`agent/AGENT_PERSONA_AND_INSTRUCTIONS.md`](agent/AGENT_PERSONA_AND_INSTRUCTIONS.md:1) and embedded in [`agent/main.py`](agent/main.py:1)), and the Large Language Model (LLM) it utilizes (e.g., Gemini).
 2.  **Jira Interaction (MCP Server):** The agent interacts with Jira indirectly via a Model Context Protocol (MCP) server, specifically the `mcp-atlassian` server. This server acts as a bridge, providing standardized tools (like `jira_create_issue` and `jira_get_issue`) that the ADK-based agent calls to perform actions within Jira. This abstracts direct API complexities and manages authentication.
 3.  **Triggers:**
     *   **Direct User Requests:** Users can directly ask the agent to perform tasks (e.g., "Create a bug report for a login failure," "Summarize issue PROJ-123").
-    *   **Jira Webhooks:** The agent is designed to listen to Jira webhooks (e.g., via the `/webhook/jira` endpoint in [`agent/main.py`](agent/main.py)). Upon receiving a webhook (like `jira:issue_created`), it processes the payload and can trigger actions such as fetching and summarizing the new issue.
+    *   **Jira Webhooks:** The agent is designed to listen to Jira webhooks (e.g., via the `/webhook/jira` endpoint in [`agent/main.py`](agent/main.py:1)). Upon receiving a webhook (like `jira:issue_created`), it processes the payload and can trigger actions such as fetching and summarizing the new issue.
 4.  **LLM Instructions:** The agent operates based on a detailed set of instructions that define its persona and how to handle specific scenarios, including when to use which tools and how to interact with the user or respond to events.
 5.  **Deployment:** The system, including both the ADK agent and the `mcp-atlassian` server, is planned for containerization and deployment, with Google Cloud Run being a target platform.
 
@@ -95,7 +95,7 @@ The server is run as a Docker container. You'll need to provide connection detai
 ---
 ## Getting Started / Setup
 
-Basic setup for the agent component involves Python dependencies, which can be found in [`agent/requirements.txt`](agent/requirements.txt). Further deployment details for the ADK agent and the `mcp-atlassian` server (potentially on Google Cloud Run) would be specific to those components.
+Basic setup for the agent component involves Python dependencies, which can be found in [`agent/requirements.txt`](agent/requirements.txt:1). Further deployment details for the ADK agent and the `mcp-atlassian` server (potentially on Google Cloud Run) would be specific to those components.
 ## Project Overview
 
 The Jira Agent is an AI-powered assistant designed to enhance engineering efficiency by automating administrative and repetitive tasks within Jira. It aims to reduce the time engineers spend on manual Jira operations, allowing them to focus on core development work. The agent is capable of tasks such as automated issue creation, summarization, identification of new issues, and determination of task ownership. It can be triggered by Jira events, scheduled times, or direct user requests, serving as a central knowledge holder that intelligently manages tasks and notifications.
@@ -112,11 +112,11 @@ The Jira Agent is built using Google's Agent Development Kit (ADK). For interact
 
 ```mermaid
 graph LR
-    User --&gt; JiraAgentADK[Jira Agent (ADK-based)];
-    JiraAgentADK -- Uses Tools --&gt; MCPAtlassian[mcp-atlassian Server];
-    MCPAtlassian -- Interacts With --&gt; Jira[Jira API];
-    MCPAtlassian -- Interacts With --&gt; Confluence[Confluence API];
-    JiraAgentADK -- LLM Interaction --&gt; LLM[Large Language Model];
+    User --> JiraAgentADK[Jira Agent (ADK-based)];
+    JiraAgentADK -- Uses Tools --> MCPAtlassian[mcp-atlassian Server];
+    MCPAtlassian -- Interacts With --> Jira[Jira API];
+    MCPAtlassian -- Interacts With --> Confluence[Confluence API];
+    JiraAgentADK -- LLM Interaction --> LLM[Large Language Model];
 ```
 
 ## Development Setup
